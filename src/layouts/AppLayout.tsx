@@ -59,7 +59,7 @@ export function AppLayout() {
   const breadcrumb = [{ label: 'Studio Forma' }, { label: getTitle() }];
 
   return (
-    <div className="flex h-screen bg-gray-50 overflow-hidden">
+    <div className="flex h-screen overflow-hidden" style={{ background: 'var(--cream)' }}>
       {/* Sidebar - desktop */}
       <div className="hidden lg:flex flex-col w-64 shrink-0 border-r border-white/5">
         <Sidebar />

@@ -29,7 +29,7 @@ export function TopNav({ onMenuToggle, breadcrumb }: TopNavProps) {
   ] : [];
 
   return (
-    <header className="h-14 bg-white border-b border-gray-100 flex items-center px-4 gap-4 z-30 shrink-0">
+    <header className="h-14 flex items-center px-4 gap-4 z-30 shrink-0" style={{ background: '#FEFCF7', borderBottom: '1px solid var(--cream-dark)' }}>
       {/* Mobile menu toggle */}
       <button onClick={onMenuToggle} className="lg:hidden text-gray-500 hover:text-gray-700">
         <Menu className="h-5 w-5" />
@@ -125,7 +125,7 @@ export function TopNav({ onMenuToggle, breadcrumb }: TopNavProps) {
               <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100">
                 <h3 className="text-sm font-semibold text-gray-900">Notifications</h3>
                 {unreadCount > 0 && (
-                  <button onClick={markAllNotificationsRead} className="text-xs text-blue-600 hover:underline">Mark all read</button>
+                  <button onClick={markAllNotificationsRead} className="text-xs hover:underline" style={{ color: 'var(--gold-dark)' }}>Mark all read</button>
                 )}
               </div>
               <div className="max-h-80 overflow-y-auto divide-y divide-gray-50">
@@ -133,10 +133,10 @@ export function TopNav({ onMenuToggle, breadcrumb }: TopNavProps) {
                   <div
                     key={notif.id}
                     onClick={() => markNotificationRead(notif.id)}
-                    className={cn('px-4 py-3 cursor-pointer hover:bg-gray-50', !notif.read && 'bg-blue-50/50')}
+                    className={cn('px-4 py-3 cursor-pointer hover:bg-gray-50', !notif.read && 'bg-amber-50/50')}
                   >
                     <div className="flex items-start gap-2">
-                      {!notif.read && <div className="mt-1.5 h-2 w-2 rounded-full bg-blue-500 shrink-0" />}
+                      {!notif.read && <div className="mt-1.5 h-2 w-2 rounded-full shrink-0" style={{ background: 'var(--gold)' }} />}
                       <div className={!notif.read ? '' : 'pl-4'}>
                         <p className="text-xs font-medium text-gray-900">{notif.title}</p>
                         <p className="text-xs text-gray-500 mt-0.5 leading-relaxed">{notif.message}</p>
@@ -179,7 +179,8 @@ export function TopNav({ onMenuToggle, breadcrumb }: TopNavProps) {
                   <button
                     key={u.id}
                     onClick={() => { setCurrentUser(u.id); setShowUserMenu(false); }}
-                    className={cn('flex items-center gap-3 w-full px-4 py-2 text-sm hover:bg-gray-50', u.id === currentUserId && 'text-blue-600 font-medium')}
+                    className={cn('flex items-center gap-3 w-full px-4 py-2 text-sm hover:bg-gray-50', u.id === currentUserId && 'font-medium')}
+                    style={u.id === currentUserId ? { color: 'var(--gold-dark)' } : {}}
                   >
                     <Avatar name={u.name} size="xs" />
                     <div className="text-left">

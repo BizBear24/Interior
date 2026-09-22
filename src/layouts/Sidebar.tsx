@@ -112,16 +112,16 @@ export function Sidebar({ mobile = false, onClose }: { mobile?: boolean; onClose
   };
 
   return (
-    <div className={cn('flex flex-col h-full bg-[#0F1117] text-gray-300', mobile ? 'w-full' : 'w-64')}>
+    <div className={cn('flex flex-col h-full text-stone-300', mobile ? 'w-full' : 'w-64')} style={{ background: 'var(--brown-dark)' }}>
       {/* Logo */}
-      <div className="h-14 flex items-center px-4 border-b border-white/5 shrink-0">
+      <div className="h-14 flex items-center px-4 shrink-0" style={{ borderBottom: '1px solid rgba(201,168,76,0.15)' }}>
         <div className="flex items-center gap-2.5">
-          <div className="h-7 w-7 rounded-lg bg-blue-600 flex items-center justify-center">
-            <Home className="h-4 w-4 text-white" />
+          <div className="h-7 w-7 rounded-lg flex items-center justify-center" style={{ background: 'var(--gold)' }}>
+            <Home className="h-4 w-4" style={{ color: 'var(--brown-dark)' }} />
           </div>
           <div>
-            <p className="text-sm font-semibold text-white leading-tight">Studio Forma</p>
-            <p className="text-[10px] text-gray-500">Interior OS</p>
+            <p className="text-sm font-semibold leading-tight" style={{ color: 'var(--gold-light)' }}>Studio Forma</p>
+            <p className="text-[10px]" style={{ color: 'var(--brown-light)' }}>Interior OS</p>
           </div>
         </div>
       </div>
@@ -131,7 +131,8 @@ export function Sidebar({ mobile = false, onClose }: { mobile?: boolean; onClose
         {sections.map((section) => (
           <div key={section.title} className="mb-1">
             <button
-              className="flex items-center justify-between w-full px-4 py-1.5 text-[10px] font-semibold uppercase tracking-widest text-gray-500 hover:text-gray-400 transition-colors"
+              className="flex items-center justify-between w-full px-4 py-1.5 text-[10px] font-semibold uppercase tracking-widest transition-colors"
+              style={{ color: 'var(--brown-light)' }}
               onClick={() => toggleSection(section.title)}
             >
               {section.title}
@@ -147,10 +148,12 @@ export function Sidebar({ mobile = false, onClose }: { mobile?: boolean; onClose
                       key={item.path}
                       to={item.path}
                       onClick={onClose}
-                      className={cn(
-                        'flex items-center gap-2.5 mx-2 px-3 py-2 rounded-lg text-sm transition-colors',
-                        isActive ? 'bg-blue-600/20 text-blue-400 font-medium' : 'text-gray-400 hover:bg-white/5 hover:text-gray-200'
-                      )}
+                      className={cn('flex items-center gap-2.5 mx-2 px-3 py-2 rounded-lg text-sm transition-all')}
+                      style={isActive
+                        ? { background: 'rgba(201,168,76,0.18)', color: 'var(--gold)', fontWeight: 600 }
+                        : { color: '#A89880' }}
+                      onMouseEnter={(e) => { if (!isActive) { e.currentTarget.style.background = 'rgba(255,255,255,0.05)'; e.currentTarget.style.color = 'var(--gold-light)'; } }}
+                      onMouseLeave={(e) => { if (!isActive) { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#A89880'; } }}
                     >
                       <Icon className="h-4 w-4 shrink-0" />
                       {item.label}
@@ -164,8 +167,8 @@ export function Sidebar({ mobile = false, onClose }: { mobile?: boolean; onClose
       </nav>
 
       {/* Footer */}
-      <div className="h-12 border-t border-white/5 flex items-center px-4">
-        <p className="text-[10px] text-gray-600">{settings.companyName} · v1.0</p>
+      <div className="h-12 flex items-center px-4" style={{ borderTop: '1px solid rgba(201,168,76,0.12)' }}>
+        <p className="text-[10px]" style={{ color: 'var(--brown-light)' }}>{settings.companyName} · v1.0</p>
       </div>
     </div>
   );

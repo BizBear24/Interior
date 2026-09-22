@@ -17,13 +17,13 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
       ref={ref}
       disabled={disabled || loading}
       className={cn(
-        'inline-flex items-center justify-center font-medium rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none',
-        variant === 'default' && 'bg-blue-600 text-white hover:bg-blue-700 shadow-sm',
-        variant === 'secondary' && 'bg-gray-100 text-gray-700 hover:bg-gray-200',
-        variant === 'outline' && 'border border-gray-200 bg-white text-gray-700 hover:bg-gray-50',
-        variant === 'ghost' && 'text-gray-700 hover:bg-gray-100',
+        'inline-flex items-center justify-center font-medium rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 disabled:opacity-50 disabled:pointer-events-none',
+        variant === 'default' && '[background:var(--gold)] [color:var(--brown-dark)] hover:[background:var(--gold-dark)] hover:text-white shadow-sm',
+        variant === 'secondary' && '[background:var(--cream-dark)] [color:var(--brown-mid)] hover:[background:#DDD3C2]',
+        variant === 'outline' && 'border [border-color:var(--gold)] bg-white [color:var(--brown-mid)] hover:[background:var(--cream)]',
+        variant === 'ghost' && '[color:var(--brown-mid)] hover:[background:var(--cream-dark)]',
         variant === 'destructive' && 'bg-red-600 text-white hover:bg-red-700',
-        variant === 'link' && 'text-blue-600 hover:underline p-0',
+        variant === 'link' && '[color:var(--gold-dark)] hover:underline p-0',
         size === 'sm' && 'text-xs px-3 py-1.5 gap-1.5',
         size === 'md' && 'text-sm px-4 py-2 gap-2',
         size === 'lg' && 'text-base px-5 py-2.5 gap-2',
